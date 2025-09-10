@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura Celular Interactiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-purple: #4E4187;
+            --strong-blue: #3083DC;
+            --off-white: #F8FFE5;
+            --bright-green: #7DDE92;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--off-white);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-button.active {
+            border-color: var(--strong-blue);
+            color: var(--strong-blue);
+            background-color: #e0f2fe; /* Light blue for active tab background */
+        }
+        .quiz-option.correct {
+            background-color: #dcfce7; /* green-100 */
+            border-color: var(--bright-green);
+        }
+        .quiz-option.incorrect {
+            background-color: #fee2e2; /* red-100 */
+            border-color: #ef4444; /* red-500 */
+        }
+        h1, h2 {
+            color: var(--dark-purple);
+        }
+        .interactive-button {
+            background-color: var(--strong-blue);
+            color: white;
+        }
+        .interactive-button:hover {
+            background-color: #1e6ab7; /* Darker blue on hover */
+        }
+        .quiz-section {
+            background-color: #fafbe2; /* Lighter version of off-white for contrast */
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold">Explorando la Célula</h1>
+            <p class="mt-2 text-lg text-gray-600">Un viaje interactivo al interior de la unidad de la vida.</p>
+        </header>
+
+        <!-- Pestañas de Navegación -->
+        <div class="mb-8 border-b border-gray-300">
+            <nav class="flex flex-wrap -mb-px" aria-label="Tabs">
+                <button class="tab-button active text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'membrana')">Membrana Plasmática</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'organelos')">Organelos</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'transporte')">Transporte Celular</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'osmosis')">Ósmosis</button>
+            </nav>
+        </div>
+
+        <main>
+            <!-- 1. Membrana Plasmática -->
+            <div id="membrana" class="tab-content active">
+                <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">La Membrana Plasmática: El Guardián de la Célula</h2>
+                    <p class="mb-4">Es una barrera flexible pero robusta que rodea y contiene el citoplasma de la célula. Su característica más importante es la <strong>permeabilidad selectiva</strong>: permite el paso de ciertas sustancias mientras restringe el de otras.</p>
+                    <h3 class="font-bold text-lg mb-2" style="color: var(--strong-blue);">Modelo del Mosaico Fluido</h3>
+                    <p class="mb-4">Este modelo describe la membrana como una estructura dinámica y fluida. Sus componentes principales son:</p>
+                    <ul class="list-disc list-inside pl-4 space-y-2">
+                        <li><strong>Bicapa de Fosfolípidos:</strong> Dos capas de lípidos que forman la estructura básica. Las "cabezas" hidrofílicas (aman el agua) apuntan hacia afuera y adentro de la célula, mientras que las "colas" hidrofóbicas (odian el agua) se orientan hacia el interior de la bicapa.</li>
+                        <li><strong>Proteínas:</strong> Incrustadas en la bicapa, actúan como canales, transportadores, receptores y enzimas.</li>
+                        <li><strong>Colesterol:</strong> Proporciona estabilidad y fluidez a la membrana.</li>
+                        <li><strong>Glúcidos (Carbohidratos):</strong> Se unen a lípidos y proteínas en la superficie externa, formando el glucocálix, importante para el reconocimiento celular.</li>
+                    </ul>
+                </section>
+                <section class="quiz-section mt-6 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--dark-purple);">¡Ponte a prueba!</h3>
+                    <div id="quiz-membrana"></div>
+                    <button class="interactive-button mt-4 font-bold py-2 px-4 rounded" onclick="submitQuiz('membrana')">Evaluar</button>
+                    <div id="result-membrana" class="mt-4 font-bold"></div>
+                </section>
+            </div>
+
+            <!-- 2. Organelos -->
+            <div id="organelos" class="tab-content">
+                <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">Organelos: Los Órganos de la Célula Eucariota</h2>
+                    <p class="mb-4">Son estructuras especializadas dentro del citoplasma que realizan funciones específicas, similar a como los órganos lo hacen en el cuerpo.</p>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead style="background-color: #e9f5ff;">
+                                <tr>
+                                    <th class="py-2 px-4 border-b text-left font-semibold" style="color: var(--strong-blue);">Organelo</th>
+                                    <th class="py-2 px-4 border-b text-left font-semibold" style="color: var(--strong-blue);">Función Principal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="py-2 px-4 border-b font-bold">Núcleo</td><td class="py-2 px-4 border-b">Contiene el ADN y controla las actividades celulares.</td></tr>
+                                <tr><td class="py-2 px-4 border-b font-bold">Mitocondria</td><td class="py-2 px-4 border-b">Genera energía (ATP) a través de la respiración celular. ¡La central energética!</td></tr>
+                                <tr><td class="py-2 px-4 border-b font-bold">Ribosomas</td><td class="py-2 px-4 border-b">Sintetizan proteínas.</td></tr>
+                                <tr><td class="py-2 px-4 border-b font-bold">Retículo Endoplasmático (RE)</td><td class="py-2 px-4 border-b">El RE Rugoso modifica proteínas (con ribosomas); el RE Liso sintetiza lípidos y destoxifica.</td></tr>
+                                <tr><td class="py-2 px-4 border-b font-bold">Aparato de Golgi</td><td class="py-2 px-4 border-b">Modifica, clasifica y empaqueta proteínas y lípidos para su transporte.</td></tr>
+                                <tr><td class="py-2 px-4 border-b font-bold">Lisosomas</td><td class="py-2 px-4 border-b">Contienen enzimas digestivas para descomponer desechos y partículas.</td></tr>
+                                <tr><td class="py-2 px-4 border-b font-bold" style="color: var(--bright-green);">Cloroplastos (Plantas)</td><td class="py-2 px-4 border-b">Realizan la fotosíntesis para convertir la luz solar en energía.</td></tr>
+                                <tr><td class="py-2 px-4 border-b font-bold" style="color: var(--bright-green);">Vacuola Central (Plantas)</td><td class="py-2 px-4 border-b">Almacena agua, nutrientes y desechos; mantiene la presión de turgencia.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="quiz-section mt-6 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--dark-purple);">¡Ponte a prueba!</h3>
+                    <div id="quiz-organelos"></div>
+                    <button class="interactive-button mt-4 font-bold py-2 px-4 rounded" onclick="submitQuiz('organelos')">Evaluar</button>
+                    <div id="result-organelos" class="mt-4 font-bold"></div>
+                </section>
+            </div>
+
+            <!-- 3. Transporte Celular -->
+            <div id="transporte" class="tab-content">
+                <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">Transporte a través de la Membrana</h2>
+                    <p class="mb-4">Las células necesitan intercambiar sustancias con su entorno. Este movimiento es regulado por la membrana plasmática.</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-4 rounded-lg border-2" style="border-color: var(--bright-green);">
+                            <h3 class="font-bold text-lg mb-2" style="color: var(--dark-purple);">Transporte Pasivo</h3>
+                            <p><strong>No requiere energía</strong> (ATP). Las sustancias se mueven a favor de su gradiente de concentración (de mayor a menor concentración).</p>
+                            <ul class="list-disc list-inside mt-2 pl-2">
+                                <li><strong>Difusión Simple:</strong> Moléculas pequeñas y sin carga (O₂, CO₂) pasan directamente a través de la bicapa.</li>
+                                <li><strong>Difusión Facilitada:</strong> Moléculas más grandes o con carga (glucosa, iones) necesitan la ayuda de proteínas de canal o transportadoras.</li>
+                            </ul>
+                        </div>
+                        <div class="p-4 rounded-lg border-2" style="border-color: var(--strong-blue);">
+                            <h3 class="font-bold text-lg mb-2" style="color: var(--dark-purple);">Transporte Activo</h3>
+                            <p><strong>Sí requiere energía</strong> (ATP). Las sustancias se mueven en contra de su gradiente de concentración (de menor a mayor concentración).</p>
+                             <ul class="list-disc list-inside mt-2 pl-2">
+                                <li><strong>Bombas de Proteínas:</strong> La bomba de sodio-potasio es un ejemplo vital que mantiene los gradientes iónicos en las neuronas.</li>
+                                <li><strong>Transporte en Masa:</strong> Para partículas muy grandes (Endocitosis: hacia adentro; Exocitosis: hacia afuera).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="quiz-section mt-6 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--dark-purple);">¡Ponte a prueba!</h3>
+                    <div id="quiz-transporte"></div>
+                    <button class="interactive-button mt-4 font-bold py-2 px-4 rounded" onclick="submitQuiz('transporte')">Evaluar</button>
+                    <div id="result-transporte" class="mt-4 font-bold"></div>
+                </section>
+            </div>
+
+            <!-- 4. Ósmosis -->
+            <div id="osmosis" class="tab-content">
+                <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">Ósmosis: El Movimiento del Agua</h2>
+                    <p class="mb-4">La ósmosis es un tipo especial de difusión pasiva: el movimiento de <strong>moléculas de agua</strong> a través de una membrana semipermeable, desde una zona de alta concentración de agua (baja concentración de soluto) a una de baja concentración de agua (alta concentración de soluto).</p>
+                    <p class="mb-4">El efecto de la ósmosis en una célula depende de la <strong>tonicidad</strong> de la solución externa:</p>
+                    <ul class="list-none space-y-4">
+                        <li class="p-3 rounded-lg" style="background-color: #e9f5ff;"><strong>Solución Isotónica:</strong> La concentración de soluto es la misma dentro y fuera de la célula. El agua se mueve en ambas direcciones por igual. La célula mantiene su forma.</li>
+                        <li class="p-3 rounded-lg" style="background-color: #e9f5ff;"><strong>Solución Hipertónica:</strong> Mayor concentración de soluto fuera de la célula. El agua sale de la célula para diluir el exterior, causando que la célula se encoja (crenación en animales, plasmólisis en plantas).</li>
+                        <li class="p-3 rounded-lg" style="background-color: #e9f5ff;"><strong>Solución Hipotónica:</strong> Menor concentración de soluto fuera de la célula. El agua entra en la célula, causando que se hinche y pueda estallar (lisis en animales). En plantas, la pared celular evita que estalle y la célula se vuelve turgente.</li>
+                    </ul>
+                </section>
+                <section class="quiz-section mt-6 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4" style="color: var(--dark-purple);">¡Ponte a prueba!</h3>
+                    <div id="quiz-osmosis"></div>
+                    <button class="interactive-button mt-4 font-bold py-2 px-4 rounded" onclick="submitQuiz('osmosis')">Evaluar</button>
+                    <div id="result-osmosis" class="mt-4 font-bold"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function changeTab(event, tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        const quizzes = {
+            membrana: {
+                questions: [
+                    { q: "¿Cuál es la función principal de la membrana plasmática?", o: ["Producir energía", "Controlar el paso de sustancias", "Sintetizar proteínas"], a: "Controlar el paso de sustancias" },
+                    { q: "La estructura básica de la membrana está formada por:", o: ["Una capa de proteínas", "Una bicapa de fosfolípidos", "Una pared de celulosa"], a: "Una bicapa de fosfolípidos" }
+                ]
+            },
+            organelos: {
+                questions: [
+                    { q: "¿Qué organelo es conocido como la 'central energética' de la célula?", o: ["Núcleo", "Ribosoma", "Mitocondria"], a: "Mitocondria" },
+                    { q: "¿Qué organelo, presente en plantas pero no en animales, realiza la fotosíntesis?", o: ["Pared celular", "Cloroplasto", "Lisosoma"], a: "Cloroplasto" }
+                ]
+            },
+            transporte: {
+                questions: [
+                    { q: "El movimiento de oxígeno (O₂) hacia dentro de la célula es un ejemplo de:", o: ["Transporte activo", "Difusión simple", "Endocitosis"], a: "Difusión simple" },
+                    { q: "¿Qué tipo de transporte requiere ATP y mueve sustancias contra su gradiente?", o: ["Transporte activo", "Transporte pasivo", "Difusión facilitada"], a: "Transporte activo" }
+                ]
+            },
+            osmosis: {
+                questions: [
+                    { q: "Si colocas un glóbulo rojo en agua destilada (una solución hipotónica), ¿qué ocurrirá?", o: ["Se encogerá", "No cambiará", "Se hinchará y estallará"], a: "Se hinchará y estallará" },
+                    { q: "La ósmosis es el movimiento específico de:", o: ["Iones", "Glucosa", "Agua"], a: "Agua" }
+                ]
+            }
+        };
+
+        function renderQuiz(quizId) {
+            const quizContainer = document.getElementById(`quiz-${quizId}`);
+            if (!quizContainer) return;
+            const quizData = quizzes[quizId];
+            let html = '';
+            quizData.questions.forEach((item, index) => {
+                html += `<div class="mb-4" id="q-${quizId}-${index}">`;
+                html += `<p class="font-semibold mb-2">${index + 1}. ${item.q}</p>`;
+                html += `<div class="space-y-2">`;
+                item.o.forEach(option => {
+                    html += `<label class="quiz-option block p-3 border-2 border-gray-300 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">`;
+                    html += `<input type="radio" name="q${quizId}${index}" value="${option}" class="mr-2">`;
+                    html += option;
+                    html += `</label>`;
+                });
+                html += `</div></div>`;
+            });
+            quizContainer.innerHTML = html;
+        }
+
+        function submitQuiz(quizId) {
+            const quizData = quizzes[quizId];
+            let score = 0;
+            quizData.questions.forEach((item, index) => {
+                const qContainer = document.getElementById(`q-${quizId}-${index}`);
+                const selected = qContainer.querySelector(`input[name="q${quizId}${index}"]:checked`);
+                const labels = qContainer.querySelectorAll('label');
+                
+                labels.forEach(label => {
+                    label.classList.remove('correct', 'incorrect');
+                    const radio = label.querySelector('input');
+                    if (radio.value === item.a) {
+                        label.classList.add('correct');
+                    }
+                });
+
+                if (selected) {
+                    if (selected.value === item.a) {
+                        score++;
+                    } else {
+                        selected.parentElement.classList.add('incorrect');
+                    }
+                }
+            });
+
+            const resultContainer = document.getElementById(`result-${quizId}`);
+            const total = quizData.questions.length;
+            resultContainer.innerHTML = `Tu puntuación: ${score} de ${total}.`;
+            if (score === total) {
+                resultContainer.style.color = '#16a34a'; // green-600
+            } else {
+                resultContainer.style.color = '#dc2626'; // red-600
+            }
+        }
+
+        window.onload = () => {
+            Object.keys(quizzes).forEach(renderQuiz);
+        };
+    </script>
+</body>
+</html>
