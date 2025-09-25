@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biología: Reproducción Celular</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #166534; /* green-800 */
+            --accent-orange: #f97316; /* orange-500 */
+            --light-gray-bg: #f3f4f6; /* gray-100 */
+            --dark-text: #1f2937; /* gray-800 */
+            --info-bg: #f0fdf4; /* green-50 */
+            --info-border: #22c55e; /* green-500 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-gray-bg);
+            color: var(--dark-text);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-button.active {
+            border-color: var(--primary-green);
+            color: var(--primary-green);
+            background-color: white;
+        }
+        h1, h2, h3 {
+            color: var(--primary-green);
+        }
+        .info-box {
+            background-color: var(--info-bg);
+            border-left: 4px solid var(--info-border);
+        }
+        .concept-title {
+            color: var(--accent-orange);
+        }
+    </style>
+    <script>
+        function changeTab(event, tabId) {
+            const tabElement = document.getElementById(tabId);
+            if (tabElement) {
+                document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+                tabElement.classList.add('active');
+                event.currentTarget.classList.add('active');
+            }
+        }
+        window.onload = () => {
+             const firstTabButton = document.querySelector('.tab-button');
+             if(firstTabButton){
+                firstTabButton.click();
+             }
+        };
+    </script>
+</head>
+<body>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold">El Ciclo de la Vida Celular</h1>
+            <p class="mt-2 text-lg text-gray-600">Un análisis conceptual de la reproducción y su regulación.</p>
+        </header>
+
+        <!-- Pestañas de Navegación -->
+        <div class="mb-8 border-b border-gray-300">
+            <nav class="flex flex-wrap -mb-px" aria-label="Tabs">
+                <button class="tab-button active text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg" onclick="changeTab(event, 'interfase')">La Interfase: Preparación</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg" onclick="changeTab(event, 'mitosis')">Mitosis y Citoquinesis</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg" onclick="changeTab(event, 'regulacion')">Regulación y Conexiones</button>
+            </nav>
+        </div>
+
+        <main>
+            <!-- 1. Interfase -->
+            <div id="interfase" class="tab-content active">
+                <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">Interfase: La Etapa de Crecimiento y Preparación</h2>
+                    <p class="mb-6">La interfase es la fase más larga del ciclo celular. Lejos de ser un período de descanso, es una etapa de intensa actividad metabólica donde la célula crece, duplica su material genético y se prepara para la división.</p>
+                    <div class="space-y-4">
+                        <div class="info-box p-4 rounded-r-lg">
+                            <h3 class="font-bold text-lg mb-2">Fase G1 (Gap 1)</h3>
+                            <p>La célula crece en tamaño, sintetiza proteínas y organelos. Es un período de crecimiento general y funcionamiento celular normal. Aquí, la célula evalúa si las condiciones son adecuadas para iniciar la división.</p>
+                        </div>
+                        <div class="info-box p-4 rounded-r-lg">
+                            <h3 class="font-bold text-lg mb-2">Fase S (Síntesis)</h3>
+                            <p>El evento central de esta fase es la replicación del ADN. Cada cromosoma se duplica para formar un par de cromátidas hermanas idénticas, unidas por un centrómero. Este paso asegura que cada célula hija reciba una copia completa del genoma.</p>
+                        </div>
+                        <div class="info-box p-4 rounded-r-lg">
+                            <h3 class="font-bold text-lg mb-2">Fase G2 (Gap 2)</h3>
+                            <p>La célula continúa creciendo y produce las proteínas y estructuras necesarias para la mitosis, como los microtúbulos que formarán el huso mitótico. Se realiza una última comprobación para asegurar que el ADN se ha duplicado correctamente antes de entrar en la división.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 2. Mitosis y Citoquinesis -->
+            <div id="mitosis" class="tab-content">
+                 <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">La División: Mitosis y Citoquinesis</h2>
+                    <p class="mb-2">La <strong>mitosis</strong> es el proceso de división del núcleo celular, donde el material genético duplicado se reparte equitativamente en dos núcleos hijos.</p>
+                    <p class="mb-6">La <strong>citoquinesis</strong> es la división del citoplasma, que generalmente ocurre al final de la mitosis para completar la formación de dos células hijas independientes.</p>
+                    <div class="space-y-4">
+                        <p><strong class="concept-title">Profase:</strong> La cromatina se condensa en cromosomas visibles. La envoltura nuclear se desintegra y el huso mitótico comienza a formarse.</p>
+                        <p><strong class="concept-title">Metafase:</strong> Los cromosomas, en su máxima condensación, se alinean en el plano ecuatorial de la célula, conocido como la placa metafásica.</p>
+                        <p><strong class="concept-title">Anafase:</strong> Las cromátidas hermanas se separan y son arrastradas hacia los polos opuestos de la célula por las fibras del huso mitótico. A partir de este momento, cada cromátida se considera un cromosoma individual.</p>
+                        <p><strong class="concept-title">Telofase:</strong> Los cromosomas llegan a los polos y comienzan a descondensarse. Se vuelve a formar una envoltura nuclear alrededor de cada conjunto de cromosomas, creando dos núcleos distintos.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- 3. Regulación y Conexiones -->
+            <div id="regulacion" class="tab-content">
+                 <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">Control del Ciclo y sus Implicaciones</h2>
+                    <p class="mb-6">El ciclo celular no es un proceso automático; está finamente regulado por un sistema de control molecular que asegura su correcta ejecución y previene errores.</p>
+                     
+                    <h3 class="font-bold text-xl mb-3 concept-title">Reguladores Clave: Ciclinas y Kinasas</h3>
+                    <p class="mb-4">El motor del ciclo celular se basa en la interacción de dos tipos de proteínas:</p>
+                    <ul class="list-disc list-inside pl-4 mb-6 space-y-2">
+                        <li><strong>Ciclinas:</strong> Proteínas cuya concentración varía de forma cíclica a lo largo de las fases. Actúan como activadores.</li>
+                        <li><strong>Kinasas dependientes de ciclinas (CDKs):</strong> Enzimas que, al ser activadas por las ciclinas, fosforilan (añaden un grupo fosfato) a otras proteínas para desencadenar los eventos específicos de cada fase del ciclo.</li>
+                    </ul>
+
+                    <h3 class="font-bold text-xl mb-3 concept-title">Conexión con el Cáncer</h3>
+                    <p class="mb-4">El cáncer es fundamentalmente una enfermedad de división celular incontrolada. Ocurre cuando hay mutaciones en los genes que codifican para las proteínas reguladoras del ciclo (como las ciclinas, CDKs o proteínas de los puntos de control). La célula pierde la capacidad de detenerse y repararse, dividiéndose de forma anárquica y formando tumores.</p>
+
+                    <h3 class="font-bold text-xl mb-3 concept-title">Conexión con las Células Madre</h3>
+                    <p class="mb-4">Las células madre son células no especializadas con una capacidad única para dividirse y diferenciarse en diversos tipos celulares. Su proceso de división celular está exquisitamente regulado para mantener un equilibrio entre la autorrenovación (crear más células madre) y la diferenciación. A diferencia de las células cancerosas, su proliferación es controlada y esencial para el crecimiento, la reparación y el mantenimiento de los tejidos.</p>
+                </section>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
+
