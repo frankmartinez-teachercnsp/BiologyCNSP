@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -106,3 +107,113 @@
                     </ul>
                      <!-- 
 [Image of diagram of the Calvin Cycle]
+=======
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energía Celular Interactiva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-purple: #4E4187;
+            --strong-blue: #3083DC;
+            --off-white: #F8FFE5;
+            --bright-green: #7DDE92;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--off-white);
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-button.active {
+            border-color: var(--strong-blue);
+            color: var(--strong-blue);
+            background-color: #e0f2fe; /* Light blue for active tab background */
+        }
+        h1, h2, h3 {
+            color: var(--dark-purple);
+        }
+        .interactive-button {
+            background-color: var(--strong-blue);
+            color: white;
+        }
+        .interactive-button:hover {
+            background-color: #1e6ab7; /* Darker blue on hover */
+        }
+    </style>
+    <script>
+        function changeTab(event, tabId) {
+            const tabElement = document.getElementById(tabId);
+            // This check prevents errors if an element is not found
+            if (tabElement) {
+                document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+                document.querySelectorAll('.tab-button').forEach(button => button.classList.remove('active'));
+                tabElement.classList.add('active');
+                event.currentTarget.classList.add('active');
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold">La Moneda de la Vida: Energía Celular</h1>
+            <p class="mt-2 text-lg text-gray-600">Cómo las células obtienen y utilizan la energía para vivir.</p>
+        </header>
+
+        <!-- Pestañas de Navegación -->
+        <div class="mb-8 border-b border-gray-300">
+            <nav class="flex flex-wrap -mb-px" aria-label="Tabs">
+                <button class="tab-button active text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'metabolismo')">Metabolismo</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'fotosintesis')">Fotosíntesis</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'respiracion')">Respiración Celular</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'procesos')">Procesos Clave</button>
+                <button class="tab-button text-md font-medium mr-2 text-center py-3 px-2 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300" onclick="changeTab(event, 'fermentacion')">Fermentación</button>
+            </nav>
+        </div>
+
+        <main>
+            <!-- 1. Metabolismo -->
+            <div id="metabolismo" class="tab-content active">
+                <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">Metabolismo: La Química de la Vida</h2>
+                    <p class="mb-4">El <strong>metabolismo</strong> es el conjunto de todas las reacciones químicas que ocurren dentro de una célula para mantener la vida. Estas reacciones se dividen en dos categorías opuestas pero complementarias:</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="p-4 rounded-lg border-2" style="border-color: var(--bright-green);">
+                            <h3 class="font-bold text-lg mb-2">Procesos Anabólicos</h3>
+                            <p><strong>Construyen</strong> moléculas complejas a partir de otras más simples. <strong>Requieren un aporte de energía</strong>. Un ejemplo clave es la fotosíntesis, donde se construye glucosa a partir de CO₂ y agua.</p>
+                        </div>
+                        <div class="p-4 rounded-lg border-2" style="border-color: var(--strong-blue);">
+                            <h3 class="font-bold text-lg mb-2">Procesos Catabólicos</h3>
+                            <p><strong>Descomponen</strong> moléculas complejas en otras más simples. <strong>Liberan energía</strong> que la célula puede utilizar. El mejor ejemplo es la respiración celular, donde la glucosa se descompone para liberar ATP.</p>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mt-6 mb-2">¿De dónde viene la energía?</h3>
+                    <ul class="list-disc list-inside pl-4 space-y-2">
+                        <li><strong>Autótrofos ("se alimentan a sí mismos"):</strong> Organismos como las plantas que producen su propio alimento (glucosa) a partir de fuentes inorgánicas, usualmente usando la luz solar (fotosíntesis). Son los productores de los ecosistemas.</li>
+                        <li><strong>Heterótrofos ("se alimentan de otros"):</strong> Organismos como los animales que obtienen energía consumiendo a otros seres vivos. Son los consumidores.</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- 2. Fotosíntesis -->
+            <div id="fotosintesis" class="tab-content">
+                 <section class="bg-white p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold mb-4">Fotosíntesis: Capturando la Energía Solar</h2>
+                    <p class="mb-4">Es el proceso anabólico que realizan las plantas, algas y algunas bacterias para convertir la energía lumínica en energía química, almacenada en moléculas de glucosa. Ocurre en los <strong>cloroplastos</strong>.</p>
+                    <p class="text-center font-mono text-gray-700 p-4 bg-gray-100 rounded-lg mb-4">
+                        6CO₂ (Dióxido de Carbono) + 6H₂O (Agua) + Luz Solar → C₆H₁₂O₆ (Glucosa) + 6O₂ (Oxígeno)
+                    </p>
+                    <h3 class="font-bold text-lg mb-2" style="color: var(--bright-green);">Etapas de la Fotosíntesis</h3>
+                    <ul class="list-disc list-inside pl-4 space-y-2">
+                        <li><strong>Reacciones dependientes de la luz:</strong> Ocurren en las membranas tilacoidales. La luz es capturada por la clorofila, el agua se rompe (liberando O₂), y se genera ATP y NADPH (moléculas portadoras de energía).</li>
+                        <li><strong>Ciclo de Calvin (Reacciones independientes de la luz):</strong> Ocurre en el estroma. Utiliza el ATP y NADPH de la etapa anterior para "fijar" el CO₂ y convertirlo en glucosa. No requiere luz directamente, pero sí los productos de las reacciones luminosas.</li>
+                    </ul>
+                     <!-- 
+[Image of diagram of the Calvin Cycle]
+>>>>>>> e196745 (deleting index.txt)
