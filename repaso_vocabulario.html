@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulario Interactivo: Energía Celular</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #166534; /* green-800 */
+            --light-green-bg: #F0FDF4; /* green-50 */
+            --accent-green: #22C55E; /* green-500 */
+            --light-bg: #F9FAFB; /* gray-50 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+        }
+        .vocab-card {
+            background-color: white;
+            border-left: 4px solid var(--primary-green);
+        }
+        .definition {
+            background-color: var(--light-green-bg);
+            border-top: 1px dashed #A7F3D0; /* green-200 */
+        }
+        h1, h2 {
+            color: var(--primary-green);
+        }
+    </style>
+    <script>
+        function toggleDefinition(id) {
+            const element = document.getElementById(id);
+            const button = element.parentElement.querySelector('button');
+            if (element) {
+                element.classList.toggle('hidden');
+                 if (element.classList.contains('hidden')) {
+                    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg><span>Mostrar Definición</span>';
+                } else {
+                    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg><span>Ocultar Definición</span>';
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold">Vocabulario de Biología</h1>
+            <p class="mt-2 text-lg text-gray-600">Conceptos clave sobre Metabolismo, Fotosíntesis y Respiración Celular.</p>
+        </header>
+
+        <main class="space-y-8">
+
+            <!-- Sección de Metabolismo -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4 pb-2 border-b-2 border-green-200">Conceptos Fundamentales de Energía</h2>
+                <div class="space-y-4">
+                    <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Energía</h3>
+                            <button onclick="toggleDefinition('def-1')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-1" class="definition p-4 hidden"><p>La capacidad para realizar un trabajo o transferir calor. En biología, es esencial para todos los procesos vitales como el crecimiento, movimiento y reproducción.</p></div>
+                    </div>
+                    <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Termodinámica</h3>
+                            <button onclick="toggleDefinition('def-2')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-2" class="definition p-4 hidden"><p>El estudio de las transformaciones de la energía. Las leyes de la termodinámica gobiernan cómo la energía fluye y se transforma en los sistemas biológicos.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Metabolismo</h3>
+                            <button onclick="toggleDefinition('def-3')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-3" class="definition p-4 hidden"><p>El conjunto de todas las reacciones químicas que ocurren en una célula para mantener la vida. Se divide en anabolismo (construcción de moléculas) y catabolismo (degradación de moléculas).</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Trifosfato de Adenosina (ATP)</h3>
+                            <button onclick="toggleDefinition('def-4')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-4" class="definition p-4 hidden"><p>La principal molécula portadora de energía en todas las formas de vida. Almacena y transfiere energía en las células para impulsar reacciones metabólicas.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Fotosíntesis -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4 pb-2 border-b-2 border-green-200">Fotosíntesis</h2>
+                <div class="space-y-4">
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Fotosíntesis</h3>
+                            <button onclick="toggleDefinition('def-5')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-5" class="definition p-4 hidden"><p>Proceso mediante el cual las plantas, algas y algunas bacterias convierten la energía lumínica en energía química, almacenada en forma de glucosa.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Tilacoides</h3>
+                            <button onclick="toggleDefinition('def-6')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-6" class="definition p-4 hidden"><p>Estructuras membranosas en forma de saco dentro de los cloroplastos donde tienen lugar las reacciones dependientes de la luz de la fotosíntesis.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Grana</h3>
+                            <button onclick="toggleDefinition('def-7')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-7" class="definition p-4 hidden"><p>Pilas o apilamientos de tilacoides. Aumentan la superficie para la absorción de luz.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Estroma</h3>
+                            <button onclick="toggleDefinition('def-8')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-8" class="definition p-4 hidden"><p>El fluido denso dentro del cloroplasto que rodea los tilacoides. Es el sitio donde ocurre el Ciclo de Calvin (reacciones independientes de la luz).</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Pigmento</h3>
+                            <button onclick="toggleDefinition('def-9')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-9" class="definition p-4 hidden"><p>Molécula que absorbe luz de longitudes de onda específicas. La clorofila es el pigmento principal en la fotosíntesis, responsable del color verde de las plantas.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">NADP+</h3>
+                            <button onclick="toggleDefinition('def-10')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-10" class="definition p-4 hidden"><p>Una coenzima que funciona como un portador de electrones de alta energía. En su forma reducida (NADPH), transporta la energía absorbida de la luz a las reacciones del Ciclo de Calvin.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Ciclo de Calvin</h3>
+                            <button onclick="toggleDefinition('def-11')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-11" class="definition p-4 hidden"><p>La serie de reacciones bioquímicas que no dependen de la luz en la fotosíntesis. Utiliza el ATP y NADPH de las reacciones luminosas para convertir el dióxido de carbono en glucosa.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Rubisco</h3>
+                            <button onclick="toggleDefinition('def-12')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-12" class="definition p-4 hidden"><p>La enzima que cataliza el primer paso del Ciclo de Calvin, la fijación del dióxido de carbono. Es la proteína más abundante en la Tierra.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Respiración Celular -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4 pb-2 border-b-2 border-green-200">Respiración Celular y Fermentación</h2>
+                <div class="space-y-4">
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Respiración Celular</h3>
+                            <button onclick="toggleDefinition('def-13')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-13" class="definition p-4 hidden"><p>Proceso catabólico en el que las células descomponen la glucosa y otras moléculas de alimento en presencia de oxígeno para producir ATP, liberando dióxido de carbono y agua como subproductos.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Proceso Anaeróbico</h3>
+                            <button onclick="toggleDefinition('def-14')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-14" class="definition p-4 hidden"><p>Un proceso metabólico que no requiere oxígeno. La glucólisis y la fermentación son ejemplos.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Respiración Aeróbica / Proceso Aeróbico</h3>
+                            <button onclick="toggleDefinition('def-15')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-15" class="definition p-4 hidden"><p>Un proceso metabólico que requiere oxígeno. El Ciclo de Krebs y la cadena de transporte de electrones son etapas aeróbicas de la respiración celular.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Glucólisis</h3>
+                            <button onclick="toggleDefinition('def-16')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-16" class="definition p-4 hidden"><p>La primera etapa de la respiración celular, que ocurre en el citoplasma. Es un proceso anaeróbico que descompone una molécula de glucosa en dos moléculas de piruvato, produciendo una pequeña cantidad de ATP y NADH.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Ciclo de Krebs</h3>
+                            <button onclick="toggleDefinition('def-17')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-17" class="definition p-4 hidden"><p>La segunda etapa de la respiración aeróbica, que ocurre en la matriz mitocondrial. Completa la descomposición de la glucosa, liberando dióxido de carbono y generando ATP, NADH y FADH₂, que son portadores de electrones.</p></div>
+                    </div>
+                     <!-- Palabra -->
+                    <div class="vocab-card rounded-lg shadow-sm overflow-hidden">
+                        <div class="p-4 flex justify-between items-center">
+                            <h3 class="text-xl font-semibold">Fermentación</h3>
+                            <button onclick="toggleDefinition('def-18')" class="flex items-center space-x-2 text-green-700 font-medium py-1 px-3 rounded-full hover:bg-green-100 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                                <span>Mostrar Definición</span>
+                            </button>
+                        </div>
+                        <div id="def-18" class="definition p-4 hidden"><p>Un proceso anaeróbico que sigue a la glucólisis cuando no hay oxígeno disponible. Regenera el NAD+ para que la glucólisis pueda continuar produciendo una pequeña cantidad de ATP. Sus productos pueden ser ácido láctico o alcohol etílico.</p></div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
