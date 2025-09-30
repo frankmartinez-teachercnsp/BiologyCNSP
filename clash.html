@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Interactiva de Clash Royale</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Supercell&display=swap" rel="stylesheet">
+    <style>
+        /* Estilo para la fuente personalizada de Supercell */
+        @font-face {
+            font-family: 'Supercell';
+            src: url('https://clashroyale.com/blog/author-assets/supercell-magic_web-regular.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #60a5fa);
+        }
+
+        .font-supercell {
+            font-family: 'Supercell', sans-serif;
+            -webkit-text-stroke: 2px #000; /* Borde para navegadores WebKit */
+            text-stroke: 2px #000;
+            paint-order: stroke fill;
+        }
+
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .deck-card {
+            position: relative;
+        }
+
+        .selected-card {
+            border: 4px solid #facc15; /* Borde dorado para indicar selección */
+            transform: scale(0.95);
+        }
+        
+        .elixir-cost {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            background-color: #a855f7; /* Morado de elixir */
+            color: white;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body class="text-white p-4 sm:p-8">
+
+    <div class="container mx-auto max-w-6xl">
+
+        <!-- Título -->
+        <header class="text-center mb-12">
+            <h1 class="text-5xl md:text-7xl font-supercell text-yellow-300">CLASH ROYALE</h1>
+            <p class="text-xl md:text-2xl text-gray-200 mt-2">Una Guía Interactiva a la Arena</p>
+        </header>
+
+        <!-- Secciones de la presentación -->
+        <div class="space-y-16">
+
+            <!-- Sección 1: ¿Qué es Clash Royale? -->
+            <section class="bg-blue-900/50 p-6 rounded-2xl shadow-lg backdrop-blur-sm border border-blue-400/50">
+                <h2 class="text-3xl font-supercell text-yellow-300 mb-4">¿Qué es Clash Royale?</h2>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <img src="https://placehold.co/300x200/3b82f6/ffffff?text=Rey+Azul" alt="Rey de Clash Royale" class="w-48 h-auto rounded-lg">
+                    <p class="text-lg text-gray-200 leading-relaxed">
+                        Clash Royale es un juego de estrategia en tiempo real para móviles creado por Supercell. El objetivo es destruir las torres del oponente desplegando cartas con diferentes tropas, hechizos y estructuras. ¡Cada batalla es un duelo rápido y emocionante de 3 minutos!
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sección 2: El Campo de Batalla -->
+            <section class="bg-blue-900/50 p-6 rounded-2xl shadow-lg backdrop-blur-sm border border-blue-400/50">
+                <h2 class="text-3xl font-supercell text-yellow-300 mb-4">El Campo de Batalla</h2>
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                     <p class="text-lg text-gray-200 leading-relaxed md:w-2/3">
+                       El juego se desarrolla en una arena dividida por un río. Cada jugador tiene un <b class="text-yellow-300">Rey</b> y dos <b class="text-yellow-300">Torres de Princesas</b>.
+                        <br><br>
+                        El objetivo es simple: <b class="text-green-400">derribar más torres que tu rival</b>. Si destruyes la Torre del Rey, ¡ganas la partida automáticamente! Para desplegar tus cartas, necesitas <b class="text-purple-400">Elixir</b>, que se regenera constantemente.
+                    </p>
+                    <img src="https://placehold.co/400x250/3b82f6/ffffff?text=Arena+de+Juego" alt="Arena de Clash Royale" class="w-full md:w-1/3 h-auto rounded-lg">
+                </div>
+            </section>
+            
+            <!-- Sección 3: Simulador de Mazo Interactivo -->
+            <section class="bg-blue-900/50 p-6 rounded-2xl shadow-lg backdrop-blur-sm border border-blue-400/50">
+                <h2 class="text-3xl font-supercell text-yellow-300 mb-4">¡Crea tu Mazo!</h2>
+                <p class="text-lg text-gray-200 mb-6">Un mazo se compone de 8 cartas. Haz clic en las cartas de abajo para armar tu mazo ideal. ¡Piensa en un buen balance entre ataque y defensa!</p>
+
+                <!-- Mazo seleccionado -->
+                <div class="bg-blue-800/60 p-4 rounded-lg mb-6 min-h-[140px]">
+                    <h3 class="font-bold text-xl mb-2 text-center">Tu Mazo (<span id="deck-count">0</span>/8) - Coste Medio: <span id="average-elixir">0.0</span></h3>
+                    <div id="deck-slots" class="grid grid-cols-4 sm:grid-cols-8 gap-2 justify-items-center">
+                        <!-- Las cartas seleccionadas aparecerán aquí -->
+                    </div>
+                     <div id="deck-message" class="text-center text-yellow-300 mt-4 font-bold hidden">¡Tu mazo está lleno!</div>
+                </div>
+
+                <!-- Colección de cartas para seleccionar -->
+                 <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4" id="card-collection">
+                    <!-- Las cartas se generan con JavaScript -->
+                 </div>
+                 <div class="text-center mt-6">
+                    <button id="reset-deck" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg transition-colors">Reiniciar Mazo</button>
+                 </div>
+            </section>
+            
+            <!-- Sección 4: Consejos para Novatos -->
+            <section class="bg-blue-900/50 p-6 rounded-2xl shadow-lg backdrop-blur-sm border border-blue-400/50">
+                <h2 class="text-3xl font-supercell text-yellow-300 mb-4">Consejos para Novatos</h2>
+                <ul class="list-disc list-inside space-y-3 text-lg text-gray-200">
+                    <li><b class="text-purple-400">Gestiona tu Elixir:</b> No gastes todo tu elixir de golpe. A veces, es mejor esperar y defender para lanzar un contraataque poderoso.</li>
+                    <li><b class="text-green-400">Balancea tu Mazo:</b> Incluye cartas de bajo coste, cartas de ataque (como el Montapuercos), cartas de defensa (como la Lápida) y hechizos (como las Flechas).</li>
+                    <li><b class="text-yellow-400">No te rindas:</b> A veces una partida parece perdida, pero un buen combo en el último minuto puede darte la victoria. ¡Nunca dejes de luchar!</li>
+                    <li><b class="text-blue-400">Únete a un clan:</b> Podrás pedir y donar cartas, jugar batallas amistosas y participar en las Guerras de Clanes para ganar grandes recompensas.</li>
+                </ul>
+            </section>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-300">
+            <p>Creado con fines educativos. Clash Royale es una marca registrada de Supercell.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Datos de las cartas (simplificado)
+            const cardsData = [
+                { id: 1, name: 'Caballero', elixir: 3, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Caballero' },
+                { id: 2, name: 'Arqueras', elixir: 3, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Arqueras' },
+                { id: 3, name: 'Gigante', elixir: 5, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Gigante' },
+                { id: 4, name: 'Mosquetera', elixir: 4, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Mosquetera' },
+                { id: 5, name: 'Montapuercos', elixir: 4, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Montapuercos' },
+                { id: 6, name: 'Flechas', elixir: 3, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Flechas' },
+                { id: 7, name: 'Bebé Dragón', elixir: 4, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Bebé+Dragón' },
+                { id: 8, name: 'Mini P.E.K.K.A.', elixir: 4, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Mini+P.E.K.K.A.' },
+                { id: 9, name: 'Esqueletos', elixir: 1, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Esqueletos' },
+                { id: 10, name: 'Valquiria', elixir: 4, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Valquiria' },
+                { id: 11, name: 'Príncipe', elixir: 5, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Príncipe' },
+                { id: 12, name: 'Bola de Fuego', elixir: 4, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Bola+de+Fuego' },
+                { id: 13, name: 'Bruja', elixir: 5, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Bruja' },
+                { id: 14, name: 'Gólem', elixir: 8, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Gólem' },
+                { id: 15, name: 'Mago Eléctrico', elixir: 4, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Mago+Eléctrico' },
+                { id: 16, name: 'Barril de Duendes', elixir: 3, image: 'https://placehold.co/150x180/60a5fa/ffffff?text=Barril+Duendes' },
+            ];
+
+            const cardCollection = document.getElementById('card-collection');
+            const deckSlots = document.getElementById('deck-slots');
+            const deckCountSpan = document.getElementById('deck-count');
+            const avgElixirSpan = document.getElementById('average-elixir');
+            const deckMessage = document.getElementById('deck-message');
+            const resetButton = document.getElementById('reset-deck');
+
+            let selectedDeck = [];
+
+            // Función para renderizar la colección de cartas
+            function renderCardCollection() {
+                cardCollection.innerHTML = '';
+                cardsData.forEach(card => {
+                    const isSelected = selectedDeck.some(deckCard => deckCard.id === card.id);
+                    const cardElement = document.createElement('div');
+                    cardElement.className = `card cursor-pointer rounded-lg overflow-hidden relative ${isSelected ? 'selected-card' : ''}`;
+                    cardElement.dataset.cardId = card.id;
+
+                    cardElement.innerHTML = `
+                        <img src="${card.image}" alt="${card.name}" class="w-full h-auto block">
+                        <div class="elixir-cost">${card.elixir}</div>
+                    `;
+                    
+                    cardElement.addEventListener('click', () => toggleCardInDeck(card));
+                    cardCollection.appendChild(cardElement);
+                });
+            }
+            
+            // Función para renderizar el mazo
+            function renderDeck() {
+                deckSlots.innerHTML = '';
+                // Rellenar con cartas seleccionadas
+                selectedDeck.forEach(card => {
+                    const deckCardElement = document.createElement('div');
+                    deckCardElement.className = 'deck-card w-full';
+                    deckCardElement.innerHTML = `
+                        <img src="${card.image}" alt="${card.name}" class="w-full h-auto rounded-lg">
+                    `;
+                    deckSlots.appendChild(deckCardElement);
+                });
+                // Rellenar con slots vacíos
+                for (let i = selectedDeck.length; i < 8; i++) {
+                    const emptySlot = document.createElement('div');
+                    emptySlot.className = 'w-full h-full bg-blue-900/50 rounded-lg border-2 border-dashed border-blue-400 min-h-[100px]';
+                    deckSlots.appendChild(emptySlot);
+                }
+                updateDeckInfo();
+            }
+
+            // Función para añadir o quitar una carta del mazo
+            function toggleCardInDeck(card) {
+                const cardIndex = selectedDeck.findIndex(deckCard => deckCard.id === card.id);
+
+                if (cardIndex > -1) {
+                    // La carta ya está en el mazo, la quitamos
+                    selectedDeck.splice(cardIndex, 1);
+                } else {
+                    // La carta no está, la añadimos si hay espacio
+                    if (selectedDeck.length < 8) {
+                        selectedDeck.push(card);
+                    }
+                }
+                renderDeck();
+                renderCardCollection();
+            }
+
+            // Función para actualizar la información del mazo (contador y elixir)
+            function updateDeckInfo() {
+                deckCountSpan.textContent = selectedDeck.length;
+                if (selectedDeck.length > 0) {
+                    const totalElixir = selectedDeck.reduce((sum, card) => sum + card.elixir, 0);
+                    const avgElixir = (totalElixir / selectedDeck.length).toFixed(1);
+                    avgElixirSpan.textContent = avgElixir;
+                } else {
+                    avgElixirSpan.textContent = '0.0';
+                }
+
+                if (selectedDeck.length === 8) {
+                    deckMessage.classList.remove('hidden');
+                } else {
+                    deckMessage.classList.add('hidden');
+                }
+            }
+            
+            // Función para reiniciar
+            function resetDeck() {
+                selectedDeck = [];
+                renderDeck();
+                renderCardCollection();
+            }
+
+            // Inicialización
+            renderCardCollection();
+            renderDeck();
+            
+            resetButton.addEventListener('click', resetDeck);
+        });
+    </script>
+</body>
+</html>
