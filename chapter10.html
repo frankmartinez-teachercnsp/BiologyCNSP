@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biología: Reproducción Sexual</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #15803D; /* green-700 */
+            --light-green-bg: #F0FDF4; /* green-50 */
+            --accent-green: #4ADE80; /* green-400 */
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-green-bg);
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+        }
+        .tab-button.active {
+            color: var(--primary-green);
+            font-weight: 600;
+            border-bottom-color: var(--primary-green);
+        }
+        .content-tab {
+            display: none; /* Oculta todas las pestañas de contenido por defecto */
+        }
+        .content-tab.active {
+            display: block; /* Muestra solo la pestaña activa */
+        }
+        /* Fondo con patrón de células */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%2316a34a' fill-opacity='0.07'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-4v-1h4v-4h1v4zM1 1h4v1H1v4H0V1h1zM0 95h1v4h4v1H0v-5zM95 0h5v5h-1V1h-4V0zM96 1h4v1h-4v4h-1V1h1zM1 96h4v1H1v4H0v-5h1z'/%3E%3Cpath d='M23 23h2v2h-2zM28 28h2v2h-2zM43 43h2v2h-2zM48 48h2v2h-2zM63 63h2v2h-2zM68 68h2v2h-2zM83 83h2v2h-2zM88 88h2v2h-2zM13 13h2v2h-2zM18 18h2v2h-2zM33 33h2v2h-2zM38 38h2v2h-2zM53 53h2v2h-2aM58 58h2v2h-2zM73 73h2v2h-2zM78 78h2v2h-2zM23 78h2v2h-2zM28 73h2v2h-2zM43 58h2v2h-2zM48 53h2v2h-2zM63 38h2v2h-2zM68 33h2v2h-2zM83 18h2v2h-2zM88 13h2v2h-2zM13 88h2v2h-2zM18 83h2v2h-2zM33 68h2v2h-2zM38 63h2v2h-2zM53 48h2v2h-2zM58 43h2v2h-2zM73 28h2v2h-2zM78 23h2v2h-2z'/%3E%S%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            z-index: -1;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800">Reproducción Sexual y Meiosis</h1>
+            <p class="mt-2 text-xl text-green-800">Los fundamentos de la variabilidad genética.</p>
+        </header>
+
+        <!-- Pestañas de Navegación -->
+        <div class="border-b border-gray-300 mb-6 bg-white/80 backdrop-blur-sm rounded-t-lg">
+            <nav class="flex flex-wrap -mb-px" aria-label="Tabs">
+                <button class="tab-button py-4 px-6" onclick="changeTab('intro', this)">
+                    Introducción
+                </button>
+                <button class="tab-button py-4 px-6" onclick="changeTab('conceptos', this)">
+                    Diploides y Haploides
+                </button>
+                <button class="tab-button py-4 px-6" onclick="changeTab('meiosis', this)">
+                    Meiosis
+                </button>
+                <button class="tab-button py-4 px-6" onclick="changeTab('gametos', this)">
+                    Gametos
+                </button>
+                <button class="tab-button py-4 px-6" onclick="changeTab('comparacion', this)">
+                    Mitosis vs. Meiosis
+                </button>
+            </nav>
+        </div>
+
+        <!-- Área de Contenido Principal -->
+        <main class="bg-white p-8 rounded-lg shadow-xl">
+            
+            <!-- Contenido Pestaña 1: Introducción -->
+            <div id="intro" class="content-tab">
+                <h2 class="text-3xl font-semibold text-green-800 mb-6">Introducción a la Reproducción Sexual</h2>
+                <div class="space-y-4 text-lg text-gray-700">
+                    <p>La reproducción sexual es un proceso biológico que crea un nuevo organismo combinando el material genético de dos progenitores (un óvulo y un espermatozoide).</p>
+                    <p>A diferencia de la reproducción asexual (donde un organismo se clona a sí mismo), la reproducción sexual introduce <strong>variabilidad genética</strong> en la descendencia. Esta variabilidad es la materia prima de la evolución y permite a las especies adaptarse a entornos cambiantes.</p>
+                    <p>Para que esto funcione sin duplicar la cantidad de cromosomas en cada generación, los organismos deben tener un mecanismo para crear células especiales con la mitad del material genético. Ese mecanismo es la <strong>meiosis</strong>.</p>
+                </div>
+            </div>
+
+            <!-- Contenido Pestaña 2: Diploides y Haploides -->
+            <div id="conceptos" class="content-tab">
+                <h2 class="text-3xl font-semibold text-green-800 mb-6">Conceptos Clave: Diploides y Haploides</h2>
+                <div class="space-y-6 text-gray-700">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Células Diploides (2n)</h3>
+                        <p class="text-lg">Una célula diploide es aquella que contiene <strong>dos juegos completos de cromosomas</strong>. Un juego es heredado de la madre (a través del óvulo) y el otro del padre (a través del espermatozoide).</p>
+                        <ul class="list-disc list-inside pl-4 mt-2">
+                            <li>Casi todas las células de tu cuerpo (piel, hígado, músculos) son diploides.</li>
+                            <li>En los humanos, el número diploide es 46 (es decir, 2n = 46).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Células Haploides (n)</h3>
+                        <p class="text-lg">Una célula haploide es aquella que contiene <strong>un solo juego de cromosomas</strong>.</p>
+                        <ul class="list-disc list-inside pl-4 mt-2">
+                            <li>Estas son las células sexuales, también conocidas como <strong>gametos</strong> (óvulos y espermatozoides).</li>
+                            <li>En los humanos, el número haploide es 23 (es decir, n = 23).</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-green-100 border-l-4 border-green-600 rounded-lg">
+                        <p class="text-lg font-medium">La <strong class="text-green-800">meiosis</strong> es el proceso que convierte una célula diploide (2n) en células haploides (n). La <strong class="text-green-800">fecundación</strong> es el proceso que fusiona dos células haploides (n + n) para crear un nuevo organismo diploide (2n).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido Pestaña 3: Meiosis -->
+            <div id="meiosis" class="content-tab">
+                <h2 class="text-3xl font-semibold text-green-800 mb-6">Meiosis: La Fábrica de Gametos</h2>
+                <div class="space-y-4 text-lg text-gray-700">
+                    <p>La meiosis es un tipo especial de división celular que ocurre en las células germinales (en los ovarios y testículos) con el único propósito de producir gametos.</p>
+                    <p>Su objetivo principal es <strong>reducir el número de cromosomas a la mitad</strong> (de diploide a haploide) y crear diversidad genética.</p>
+                    <h3 class="text-2xl font-semibold text-gray-800 pt-4">Las Dos Divisiones de la Meiosis</h3>
+                    <p>A diferencia de la mitosis, la meiosis implica <strong>dos rondas</strong> de división celular:</p>
+                    <ul class="list-decimal list-inside pl-4 space-y-2">
+                        <li>
+                            <strong>Meiosis I (División Reduccional):</strong> Esta es la división única y más importante. La célula diploide (2n) se prepara y luego separa sus pares de cromosomas homólogos (los pares de madre y padre). El resultado son dos células haploides (n), pero cada cromosoma todavía tiene dos cromátidas (está duplicado).
+                        </li>
+                        <li>
+                            <strong>Meiosis II (División Ecuacional):</strong> Esta segunda división es muy similar a una mitosis normal. Las dos células haploides (n) dividen sus cromosomas duplicados. Las cromátidas hermanas se separan.
+                        </li>
+                    </ul>
+                    <div class="p-4 bg-green-100 border-l-4 border-green-600 rounded-lg">
+                        <p class="text-lg font-medium">El resultado final de la meiosis es: <strong>cuatro células hijas haploides (n)</strong>, cada una genéticamente diferente de la célula original y de las demás.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido Pestaña 4: Gametos -->
+            <div id="gametos" class="content-tab">
+                <h2 class="text-3xl font-semibold text-green-800 mb-6">Gametos y Fecundación</h2>
+                <div class="space-y-6 text-gray-700">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Gametos</h3>
+                        <p class="text-lg">Los gametos son las células sexuales haploides (n) resultantes de la meiosis. Son las únicas células en el cuerpo que pueden participar en la fecundación.</p>
+                        <ul class="list-disc list-inside pl-4 mt-2">
+                            <li><strong>Gametos masculinos:</strong> Espermatozoides. Son pequeños y móviles.</li>
+                            <li><strong>Gametos femeninos:</strong> Óvulos. Son grandes, no móviles y contienen los nutrientes necesarios para el desarrollo inicial del embrión.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">Fecundación</h3>
+                        <p class="text-lg">La fecundación es el proceso en el que un gameto masculino (n) se fusiona con un gameto femenino (n) para formar un <strong>cigoto</strong>.</p>
+                        <p class="text-lg mt-2">Este cigoto es la primera célula del nuevo organismo y es <strong>diploide (2n)</strong>, ya que ha restaurado el número completo de cromosomas al combinar los dos juegos haploides.</p>
+                        <div class="p-4 mt-4 bg-green-100 border-l-4 border-green-600 rounded-lg">
+                            <p class="text-lg font-medium text-center">n (óvulo) + n (espermatozoide) = 2n (cigoto)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contenido Pestaña 5: Comparación -->
+            <div id="comparacion" class="content-tab">
+                <h2 class="text-3xl font-semibold text-green-800 mb-6">Diferencias Clave: Mitosis vs. Meiosis</h2>
+                <p class="text-lg text-gray-700 mb-6">Es fundamental distinguir entre la mitosis (división para el crecimiento y la reparación) y la meiosis (división para la reproducción sexual). Aunque suenan parecidas, sus propósitos y resultados son opuestos.</p>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-300 border border-gray-300">
+                        <thead class="bg-green-100">
+                            <tr>
+                                <th class="py-3 px-4 text-left text-lg font-semibold text-green-900">Característica</th>
+                                <th class="py-3 px-4 text-left text-lg font-semibold text-green-900">Mitosis</th>
+                                <th class="py-3 px-4 text-left text-lg font-semibold text-green-900">Meiosis</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-gray-700">
+                            <tr>
+                                <td class="py-4 px-4 font-semibold">Propósito</td>
+                                <td class="py-4 px-4">Crecimiento, reparación de tejidos, reproducción asexual.</td>
+                                <td class="py-4 px-4">Producción de gametos (óvulos y espermatozoides) para la reproducción sexual.</td>
+                            </tr>
+                            <tr class="bg-green-50">
+                                <td class="py-4 px-4 font-semibold">Células donde ocurre</td>
+                                <td class="py-4 px-4">En células somáticas (casi todo el cuerpo).</td>
+                                <td class="py-4 px-4">Solo en células germinales (en ovarios y testículos).</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-4 font-semibold">Número de divisiones</td>
+                                <td class="py-4 px-4"><strong>Una</strong> división celular.</td>
+                                <td class="py-4 px-4"><strong>Dos</strong> divisiones celulares (Meiosis I y Meiosis II).</td>
+                            </tr>
+                            <tr class="bg-green-50">
+                                <td class="py-4 px-4 font-semibold">Resultado final</td>
+                                <td class="py-4 px-4"><strong>2 células hijas</strong>.</td>
+                                <td class="py-4 px-4"><strong>4 células hijas</strong>.</td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-4 font-semibold">Ploidía (Cromosomas)</td>
+                                <td class="py-4 px-4">Células hijas son <strong>diploides (2n)</strong>, idénticas a la célula madre.</td>
+                                <td class="py-4 px-4">Células hijas son <strong>haploides (n)</strong>, con la mitad de cromosomas que la célula madre.</td>
+                            </tr>
+                            <tr class="bg-green-50">
+                                <td class="py-4 px-4 font-semibold">Variabilidad Genética</td>
+                                <td class="py-4 px-4"><strong>No</strong>. Las células hijas son clones genéticos.</td>
+                                <td class="py-4 px-4"><strong>Sí</strong>. Se genera una inmensa variabilidad gracias al "entrecruzamiento" en la Meiosis I.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        function changeTab(tabId, buttonElement) {
+            // Ocultar todas las pestañas de contenido
+            const tabs = document.querySelectorAll('.content-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Desactivar todos los botones
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Mostrar la pestaña seleccionada
+            const selectedTab = document.getElementById(tabId);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+
+            // Activar el botón presionado
+            if (buttonElement) {
+                buttonElement.classList.add('active');
+            }
+        }
+
+        // Cargar el contenido de la primera pestaña por defecto al iniciar
+        window.onload = () => {
+            const firstButton = document.querySelector('.tab-button');
+            if (firstButton) {
+                changeTab('intro', firstButton);
+            }
+        };
+    </script>
+
+</body>
+</html>
+```eof
+
